@@ -1,0 +1,325 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+<!-- Mobile Specific Meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Favicon-->
+<link rel="shortcut icon" href="{%static 'base/img/fav.png' %}">
+<!-- Author Meta -->
+<meta name="author" content="colorlib">
+<!-- Meta Description -->
+<meta name="description" content="">
+<!-- Meta Keyword -->
+<meta name="keywords" content="">
+<!-- meta character set -->
+<meta charset="UTF-8">
+<!-- Site Title -->
+<title>Macro</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+  <!--
+  CSS
+  ============================================= -->
+  <link rel="stylesheet" href="{%static 'css/linearicons.css'%}">
+  <link rel="stylesheet" href="{%static 'css/font-awesome.min.css'%}">
+  <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+  <link rel="stylesheet" href="{%static 'css/magnific-popup.css'%}">
+  <link rel="stylesheet" href="{%static 'css/jquery-ui.css'%}">				
+  <link rel="stylesheet" href="{%static 'css/nice-select.css'%}">							
+  <link rel="stylesheet" href="{%static 'css/animate.min.css'%}">
+  <link rel="stylesheet" href="{%static 'css/owl.carousel.css'%}">				
+  <link rel="stylesheet" href="{%static 'css/main.css'%}">
+</head>
+<body>
+  {% if request.user.is_authenticated %}	
+  <header id="header">
+    <div class="header-top">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div id="logo">
+                <a href="index.html"><img src="{%static 'img/logo.png'%}" alt="" title="" /></a>
+              </div>
+          </div>			  					
+      </div>
+    </div>
+    <div class="container main-menu">
+      <div class="row align-items-center justify-content-center d-flex">			
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+              <li><a href="{% url 'readReservation' %}">예약확인/수정</a></li>
+              <li><a href="{% url 'postReservation' %}">예약하기</a></li>
+              <li><a href="{% url 'logout' %}">{{user.username}}(로그아웃)</a></li>
+              <li><a href="{% url 'readboard' %}">리뷰</a></li>
+              <li><a href="{% url 'post' %}">리뷰쓰기</a></li>
+              <li><a href="/admin/">관리자</a></li>
+          </nav><!-- #nav-menu-container -->					      		  
+      </div>
+    </div>
+  </header><!-- #header -->
+  {% else %}
+  <header id="header">
+    <div class="header-top">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div id="logo">
+                <a href="index.html"><img src="{%static 'img/logo.png'%}" alt="" title="" /></a>
+              </div>
+          </div>			  					
+      </div>
+    </div>
+    <div class="container main-menu">
+      <div class="row align-items-center justify-content-center d-flex">			
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+              <li><a href="{% url 'readReservation' %}">예약확인/수정</a></li>
+              <li><a href="{% url 'postReservation' %}">예약하기</a></li>
+              <li><a href="{% url 'login' %}">로그인</a></li>
+              <li><a href="{% url 'readboard' %}">리뷰</a></li>
+              <li><a href="{% url 'post' %}">리뷰쓰기</a></li>
+              <li><a href="/admin/">관리자</a></li>
+          </nav><!-- #nav-menu-container -->					      		  
+      </div>
+    </div>
+  </header><!-- #header -->
+  {% endif %}
+  
+  <!-- start banner Area -->
+  <section class="banner-area">		
+    <div class="container">
+      <div class="row fullscreen align-items-center justify-content-between">
+        <div class="col-lg-12 banner-content">
+          <h6 class="text-white">100만 고객이 선택한 식당</h6>
+          <h1 class="text-white">kyonggi Restaurant</h1>
+          <p class="text-white">
+            저희 kyonggi Restaurant 은 최초의 수제버거 집으로 현재 300명이 넘는 직원과 쉐프들로 최상의 음식과 서비스를 제공합니다
+          </p>
+        </div>
+      </div>
+    </div>					
+  </section>
+  <!-- End banner Area -->
+
+  <!-- Start home-about Area -->
+  <section class="home-about-area section-gap">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 home-about-left">
+          <h1>kyonggi Restaurant</h1>
+          <p>
+            저희는 1973년 장사를 시작하여 현재는 30여개가 넘는 체인점이 대한민국 곳곳에 분포하고있습니다. 항상 손님여러분께 싸고 맛좋은 음식을 대접하자는 마인드로 하루하루 열심히 손님들에게 서비스를 제공하고있습니다.
+          </p>
+        </div>
+        <div class="col-lg-6 home-about-right">
+          <img class="img-fluid" src="{% static 'img/about-img.jpg'%}" alt="">
+        </div>
+      </div>
+    </div>	
+  </section>
+  <!-- End home-about Area -->			
+
+  <!-- Start menu-area Area -->
+        <section class="menu-area section-gap" id="menu">
+            <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="menu-content pb-70 col-lg-8">
+          <div class="title text-center">
+            <h1 class="mb-10">메뉴판</h1>
+          </div>
+        </div>
+      </div>	
+
+                <ul class="filter-wrap filters col-lg-12 no-padding">
+                    <li class="active" data-filter="*">모든메뉴</li>
+                    <li data-filter=".breakfast">아침</li>
+                    <li data-filter=".lunch">점심</li>
+                    <li data-filter=".dinner">저녁</li>
+                    <li data-filter=".budget-meal">오늘의음료</li>
+                    <li data-filter=".buffet">오늘의메뉴</li>
+                </ul>
+                
+                <div class="filters-content">
+                    <div class="row grid">
+                        <div class="col-md-6 all breakfast">
+            <div class="single-menu">
+              <div class="title-wrap d-flex justify-content-between">
+                <h4>햄버거</h4>
+                <h4 class="price">$3200</h4>
+              </div>			
+              <p>
+                kyonggi Restaurant 에 시그니처 메뉴
+              </p>									
+            </div>					                               
+                        </div>                           
+                        <div class="col-md-6 all dinner">
+            <div class="single-menu">
+              <div class="title-wrap d-flex justify-content-between">
+                <h4>안심스테이크</h4>
+                <h4 class="price">$23000</h4>
+              </div>			
+              <p>
+                호주산 A+ 청정우로 부드러운 육질과 쫀득한 식감이 일품  
+              </p>									
+            </div>
+                        </div>
+                        <div class="col-md-6 all budget-meal">
+            <div class="single-menu">
+              <div class="title-wrap d-flex justify-content-between">
+                <h4>카페라떼</h4>
+                <h4 class="price">$4600</h4>
+              </div>			
+              <p>
+                드래곤시티 호텔 주방장이 만드는 달콤한 카페라떼
+              </p>									
+            </div>
+                        </div>
+                        <div class="col-md-6 all breakfast">
+            <div class="single-menu">
+              <div class="title-wrap d-flex justify-content-between">
+                <h4>모카라떼</h4>
+                <h4 class="price">$4900</h4>
+              </div>
+              <p>
+                20년전통 쉐프가 만드는 달콤한 모카라떼
+              </p>									
+            </div>
+                        </div>
+                        <div class="col-md-6 all lunch">
+            <div class="single-menu">
+              <div class="title-wrap d-flex justify-content-between">
+                <h4>치킨샐러드</h4>
+                <h4 class="price">$13000</h4>
+              </div>
+              <p>
+                바삭한 치킨과 아삭한 양상추가 일품인 치킨샐러드
+              </p>									
+            </div>
+                        </div>
+                        <div class="col-md-6 all buffet">
+            <div class="single-menu">
+              <div class="title-wrap d-flex justify-content-between">
+                <h4>양송이스프</h4>
+                <h4 class="price">$3600</h4>
+              </div>
+              <p>
+                3일을 푹 끓인 국내산 양송이 스프
+              </p>									
+            </div>
+                        </div>                            
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <!-- End menu-area Area -->			
+
+  <!-- Start reservation Area -->
+
+  <!-- End reservation Area -->
+  
+  <!-- Start gallery-area Area -->
+    
+        <!-- End gallery-area Area -->			
+
+  <!-- Start review Area -->
+  
+  <!-- End review Area -->					
+
+  <!-- Start blog Area -->
+ 
+ 
+  <!-- End blog Area -->							
+
+  <!-- start footer Area -->		
+  <footer class="footer-area">
+    <div class="footer-widget-wrap">
+      <div class="container">
+        <div class="row section-gap">
+          <div class="col-lg-4  col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <h4>영업시간</h4>
+              <ul class="hr-list">
+                <li class="d-flex justify-content-between">
+                  <span>Monday - Friday</span> <span>08.00 am - 10.00 pm</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <span>Saturday</span> <span>08.00 am - 10.00 pm</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <span>Sunday</span> <span>08.00 am - 10.00 pm</span>
+                </li>																				
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4  col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <h4>연락처</h4>
+              <p>
+                경기도 수원시 영통구 광교산로 154-42
+              </p>
+              <p class="number">
+                031-248-9746 <br>
+                031-624-9748
+              </p>
+            </div>
+          </div>						
+          <div class="col-lg-4  col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <h4>이메일</h4>
+              <p>이메일을 보내주시면 이벤트와 할인쿠폰을 매달 보내드립니다!</p>
+              <div class="d-flex flex-row" id="mc_embed_signup">
+
+
+                  <form class="navbar-form" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get">
+                    <div class="input-group add-on align-items-center d-flex">
+                        <input class="form-control" name="EMAIL" placeholder="Your Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email address'" required="" type="email">
+                    <div style="position: absolute; left: -5000px;">
+                      <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                    </div>
+                      <div class="input-group-btn">
+                        <button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
+                      </div>
+                    </div>
+                      <div class="info mt-20"></div>
+                  </form>
+              </div>
+            </div>
+          </div>						
+        </div>					
+      </div>					
+    </div>
+    <div class="footer-bottom-wrap">
+      <div class="container">
+        <div class="row footer-bottom d-flex justify-content-between align-items-center">
+          <p class="col-lg-8 col-mdcol-sm-6 -6 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          <ul class="col-lg-4 col-mdcol-sm-6 -6 social-icons text-right">
+                          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                          <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                          <li><a href="#"><i class="fa fa-behance"></i></a></li>           
+                      </ul>
+        </div>						
+      </div>
+    </div>
+  </footer>
+  <!-- End footer Area -->	
+
+  <script src="{% static 'js/vendor/jquery-2.2.4.min.js'%}"></script>
+  <script src="{% static 'js/popper.min.js'%}"></script>
+  <script src="{% static 'js/vendor/bootstrap.min.js'%}"></script>			
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>		
+   <script src="{% static 'js/jquery-ui.js'%}"></script>					
+    <script src="{% static 'js/easing.min.js'%}"></script>			
+  <script src="{% static 'js/hoverIntent.js'%}"></script>
+  <script src="{% static 'js/superfish.min.js'%}"></script>	
+  <script src="{% static 'js/jquery.ajaxchimp.min.js'%}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>						
+  <script src="{% static 'js/jquery.nice-select.min.js'%}"></script>					
+  <script src="{% static 'js/owl.carousel.min.js'%}"></script>			
+        <script src="{% static 'js/isotope.pkgd.min.js'%}"></script>								
+  <script src="{% static 'js/mail-script.js'%}"></script>	
+  <script src="{%static 'js/main.js'%}"></script>	
+</body>
+</html>
